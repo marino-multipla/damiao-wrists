@@ -94,3 +94,24 @@ sudo apt install python3-dev
 - Copy the build dm.xxxx.so file into the same folder of the damiao.py script
 - Rename the dm.xxxx.so file into dm.so
 - run the script
+
+## 5th Issue
+### Details
+```
+CMake Error at /opt/ros/foxy/share/cmake/pybind11/pybind11Tools.cmake:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 has been removed from CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+  Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/cmake/pybind11/pybind11Config.cmake:100 (include)
+  CMakeLists.txt:19 (find_package)
+```
+
+### Solution
+```
+cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+```
